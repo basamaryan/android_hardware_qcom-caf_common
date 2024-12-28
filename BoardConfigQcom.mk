@@ -66,6 +66,7 @@ SOONG_CONFIG_qtidisplay += \
     var3 \
     wide_color \
     hypervisor \
+    auto \
     target_no_raw10_custom_format \
     target_uses_unaligned_nv21_zsl \
     target_uses_unaligned_ycrcb \
@@ -88,6 +89,7 @@ SOONG_CONFIG_qtidisplay_var2 ?= false
 SOONG_CONFIG_qtidisplay_var3 ?= false
 SOONG_CONFIG_qtidisplay_wide_color ?= false
 SOONG_CONFIG_qtidisplay_hypervisor ?= false
+SOONG_CONFIG_qtidisplay_auto ?= false
 SOONG_CONFIG_qtidisplay_target_no_raw10_custom_format ?= false
 SOONG_CONFIG_qtidisplay_target_uses_unaligned_nv21_zsl ?= false
 SOONG_CONFIG_qtidisplay_target_uses_unaligned_ycrcb ?= false
@@ -97,6 +99,10 @@ SOONG_CONFIG_qtidisplay_target_uses_ycrcb_venus_camera_preview ?= false
 
 ifeq ($(ENABLE_HYP), true)
     SOONG_CONFIG_qtidisplay_hypervisor := true
+endif
+
+ifeq ($(TARGET_BOARD_AUTO), true)
+    SOONG_CONFIG_qtidisplay_auto := true
 endif
 
 ifneq ($(TARGET_DISPLAY_SHIFT_HORIZONTAL),)
